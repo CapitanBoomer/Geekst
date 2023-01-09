@@ -1,0 +1,7 @@
+{
+  "name": "La Geek Cueva",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
