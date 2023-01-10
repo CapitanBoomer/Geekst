@@ -7,14 +7,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InfoPeliculaPage implements OnInit {
 
-  constructor(private infopelicula:ActivatedRoute) { }
-  public foto: string = '';
+  constructor(private infopelicula: ActivatedRoute) { }
+  public mensaje: string = '';
   public titulo: string = '';
+  public foto: string = '';
+
+
+
   ngOnInit() {
   }
 
-  ionViewWillEnter(){
-  this.foto = this.infopelicula.snapshot.paramMap.get('foto')||'',
-  this.titulo = this.infopelicula.snapshot.paramMap.get('titulo')||''
+  ionViewWillEnter() {
+    this.infopelicula.params.subscribe(res => { this.titulo = res['titulo'] });
+    this.infopelicula.queryParams.subscribe(respt => {
+      this.titulo = respt['nombre'] || '',
+      this.foto = respt['foto']
+    })
   }
 }
