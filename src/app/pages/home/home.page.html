@@ -19,6 +19,7 @@
 <ion-content>
         <p>hola {{nombreuser}}</p>
 
+
   <ion-slides class="slides" [options]="slideOpt">
     <ion-slide *ngFor="let bolsa of bolsa" [routerLink]="['/info','los datos']"  [queryParams]="{foto:bolsa.foto,nombre:bolsa.titulo}">
       <div >
@@ -29,7 +30,7 @@
   </ion-slides>
   <ion-slides [options]="slideOpt2">
     <ion-slide>
-      <div class="categorias">
+      <div class="categorias" tab="anime">
         <p>Anime</p>
       </div>
     </ion-slide>
@@ -101,4 +102,5 @@
       </div>
     </ion-slide>
   </ion-slides>
+  <ion-router-outlet></ion-router-outlet>
 </ion-content>

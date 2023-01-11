@@ -1,15 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { GuardianpruebaGuard } from './guardianprueba.guard';
 
 const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
-    path: 'login',
     loadChildren: () => import('./pages/User/login/login.module').then( m => m.LoginPageModule)
   },
   {
@@ -22,12 +18,16 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    canActivate:[GuardianpruebaGuard]
+
   },
   {
     path: 'info/:mensaje',
     loadChildren: () => import('./pages/info-pelicula/info-pelicula.module').then( m => m.InfoPeliculaPageModule)
   },
+
+
 ];
 
 @NgModule({
