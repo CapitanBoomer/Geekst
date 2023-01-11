@@ -1,31 +1,38 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { Cipher } from 'crypto';
+import { MenusComponent } from './componentes/menus/menus.component';
+
 import { GuardianpruebaGuard } from './guardianprueba.guard';
 
 const routes: Routes = [
 
   {
     path: '',
-    loadChildren: () => import('./pages/User/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/User/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'register',
-    loadChildren: () => import('./pages/User/register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () => import('./pages/User/register/register.module').then(m => m.RegisterPageModule)
   },
   {
-    path: 'menu',
-    loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule)
-  },
-  {
-    path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
-    canActivate:[GuardianpruebaGuard]
+path:'menus',
+component:MenusComponent,
+children:[{
+      path: 'home',
+      loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule),
+      canActivate: [GuardianpruebaGuard]
 
+    } , {
+      path: 'info',
+      loadChildren: () => import('./pages/info-pelicula/info-pelicula.module').then(m => m.InfoPeliculaPageModule)
+    },]
   },
-  {
-    path: 'info/:mensaje',
-    loadChildren: () => import('./pages/info-pelicula/info-pelicula.module').then( m => m.InfoPeliculaPageModule)
-  },
+
+
+
+
+
 
 
 ];

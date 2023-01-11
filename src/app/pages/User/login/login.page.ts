@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ValidadorservService} from './../../../servicios/validadores/validadoresLogin/validadorserv.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-public opcion: boolean =false ;
-  constructor() { }
+
+  constructor( public servicio:ValidadorservService) { }
 
   ngOnInit() {
-    console.log(this.opcion)
   }
 
+public validar(){
+
+}
 }
